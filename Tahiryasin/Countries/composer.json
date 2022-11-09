@@ -1,0 +1,25 @@
+{
+    "name": "tahiryasin/bagisto-countries",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tahir Yasin",
+            "email": "scriptbaker@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Tahiryasin\\Countries\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tahiryasin\\Countries\\Providers\\CountriesServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "minimum-stability": "dev"
+}
