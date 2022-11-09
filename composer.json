@@ -1,5 +1,11 @@
 {
     "name": "tahiryasin/bagisto-countries",
+	"description": "Country & States CRUD GUI for Bagisto SAAS Super admin dashboard.",
+    "keywords": [
+        "bagisto",
+        "bagisto-countries"
+    ],
+    "homepage": "https://github.com/tahiryasin/bagisto-countries",
     "license": "MIT",
     "authors": [
         {
