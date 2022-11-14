@@ -43,9 +43,26 @@
                                 <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
                             </div>
 
-                            <div class="control-group">
-                                <label for="status">{{ __('countries::app.countries.status') }}</label>
-                                <input class="control" id="status" name="status" value="{{ old('status') }}"/>
+                            <div class="control-group" :class="[errors.has('status') ? 'has-error' : '']">
+                                <label for="status" class="required">{{ __('countries::app.countries.status') }}</label>
+
+                                <select class="control" name="status" v-model="status" v-validate="'required'" >
+                                    <option value="0">{{ __('saas::app.super-user.tenants.deactivate') }}</option>
+                                    <option value="1" >{{ __('saas::app.super-user.tenants.activate') }}</option>
+                                </select>
+
+                                <span class="control-error" v-if="errors.has('status')">@{{ errors.first('status') }}</span>
+
+                                <div class="clear">&nbsp;</div>
+                                @if (old('status'))
+                                    <span class="badge badge-md badge-success">
+                                    {{ __('saas::app.super-user.tenants.activated') }}
+                                </span>
+                                @else
+                                    <span class="badge badge-md badge-danger">
+                                    {{ __('saas::app.super-user.tenants.deactivated') }}
+                                </span>
+                                @endif
                             </div>
                         </div>
                     </accordian>

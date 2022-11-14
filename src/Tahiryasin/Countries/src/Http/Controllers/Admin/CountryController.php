@@ -67,10 +67,10 @@ class CountryController extends Controller
             'code'     => 'required',
             'status' => 'required',
         ]);
-dd(request()->all());
-        $page = $this->countryRepository->create(request()->all());
 
-        session()->flash('success', trans('admin::app.response.create-success', ['name' => 'page']));
+        $country = $this->countryRepository->create(request()->all());
+
+        session()->flash('success', trans('admin::app.response.create-success', ['name' => 'country']));
 
         return redirect()->route($this->_config['redirect']);
     }

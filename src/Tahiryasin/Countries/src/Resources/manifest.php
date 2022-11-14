@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'name'    => 'Tahiryasin\'s Countries CRUD',
+    'name'    => 'Tahir\'s Countries CRUD',
     'version' => '0.0.1',
 ];

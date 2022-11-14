@@ -46,15 +46,33 @@
                             </div>
 
                             <div class="control-group" :class="[errors.has('default_name') ? 'has-error' : '']">
-                                <label for="default_name" class="required">{{ __('countries::app.states.name') }}</label>
+                                <label for="default_name" class="required">{{ __('countries::app.states.default_name') }}</label>
                                 <input v-validate="'required'" class="control" id="default_name" name="default_name" data-vv-as="&quot;{{ __('countries::app.states.name') }}&quot;" value="{{ old('default_name') ?: $countryState->default_name }}"/>
                                 <span class="control-error" v-if="errors.has('default_name')">@{{ errors.first('default_name') }}</span>
                             </div>
 
-                            <div class="control-group">
-                                <label for="status">{{ __('countries::app.states.status') }}</label>
-                                <input class="control" id="status" name="status" value="{{ old('status') ?: $countryState->status }}"/>
+                            <div class="control-group" :class="[errors.has('status') ? 'has-error' : '']">
+                                <label for="status" class="required">{{ __('countries::app.states.status') }}</label>
+
+                                <select class="control" name="status" v-validate="'required'" >
+                                    <option {{ ($countryState->status ==0) ? "selected" : "" }} value="0">{{ __('saas::app.super-user.tenants.deactivate') }}</option>
+                                    <option {{ ($countryState->status ==1) ? "selected" : "" }} value="1" >{{ __('saas::app.super-user.tenants.activate') }}</option>
+                                </select>
+
+                                <span class="control-error" v-if="errors.has('status')">@{{ errors.first('status') }}</span>
+
+                                <div class="clear">&nbsp;</div>
+                                @if ($countryState->status ==1)
+                                    <span class="badge badge-md badge-success">
+                                    {{ __('saas::app.super-user.tenants.activated') }}
+                                </span>
+                                @else
+                                    <span class="badge badge-md badge-danger">
+                                    {{ __('saas::app.super-user.tenants.deactivated') }}
+                                </span>
+                                @endif
                             </div>
+
                         </div>
                     </accordian>
 
